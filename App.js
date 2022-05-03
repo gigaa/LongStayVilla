@@ -1,12 +1,41 @@
 import { StatusBar } from 'expo-status-bar';
 import { StyleSheet, Text, View } from 'react-native';
+import { NavigationContainer } from '@react-navigation/native';
+import { createStackNavigator } from '@react-navigation/stack';
+import Login from './container/Login';
+import Navbar from './container/Navbar';
+import Booking from './components/Booking';
+import BookingConfirm from './components/BookingConfirm';
+import SingleVilla from './components/SingleVilla';
+
+import reducer from "./reducer";
+// redux stuff
+import { createStore } from "redux";
+
+import { Provider } from "react-redux";
+
+const store = createStore(
+  reducer,
+);
+
+
+const Stack = createStackNavigator();
 
 export default function App() {
   return (
-    <View style={styles.container}>
-      <Text>Open up App.js to start working on your app!</Text>
-      <StatusBar style="auto" />
-    </View>
+    <Provider store={store}>
+      <NavigationContainer>
+        <Stack.Navigator>
+          <Stack.Screen name="Login" component={Login} />
+          <Stack.Screen name="Navbar" component={Navbar} />
+          <Stack.Screen name="Booking" component={Booking} />
+          <Stack.Screen name="BookingConfirm" component={BookingConfirm} />   
+          <Stack.Screen name="SingleVilla" component={SingleVilla} />
+
+        </Stack.Navigator>
+      </NavigationContainer>
+    </Provider>
+
   );
 }
 
