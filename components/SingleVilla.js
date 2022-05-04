@@ -9,7 +9,7 @@ import Icon from 'react-native-vector-icons/Ionicons';
 function SingleVilla({signle_villa ,dispatch}) {
     let navigation = useNavigation();
 
-    console.log(JSON.stringify(signle_villa) );
+    // console.log(JSON.stringify(signle_villa) );
     let {name,description,image,reviews,price,address,totalarea}= signle_villa[0]
 
     return (
