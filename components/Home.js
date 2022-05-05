@@ -2,6 +2,9 @@ import { Text,SafeAreaView, ScrollView, StyleSheet, Alert ,StatusBar} from "reac
 import React,{useEffect,useState} from 'react';
 import { useNavigation } from '@react-navigation/core';
 import VillaCard from "./VillaCard";
+import AppMenu from "./AppMenu";
+
+
 import { connect } from "react-redux";
 
 
@@ -10,11 +13,12 @@ function Home({villas = [],dispatch}) {
   let navigation = useNavigation();
   useEffect(() => {
     villas= dispatch({ type: "GET_ALL_VILLA" });
-   console.log(villas);
-  }, [, dispatch]);
+  //  console.log(villas);
+  }, []);
 
   console.log();
     return (
+      <>
         <SafeAreaView style={styles.container}>
             <ScrollView style={styles.scrollView}>
                 {villas.map((item) => <VillaCard key={item.id} 
@@ -33,6 +37,9 @@ function Home({villas = [],dispatch}) {
                             // let list = villas.filter((record) => (record.id == id));
                             // console.log("OK Pressed",list) 
                             navigation.navigate('BookingConfirm')
+                            singleVilla= dispatch({ type: "GET_SINGLE_VILLA_SUCCESS" ,payload: { id } });
+                            bookingVilla= dispatch({ type: "GET_BOOKING" ,payload: { id } });
+
                           }
                         }
                         ]
@@ -50,6 +57,8 @@ function Home({villas = [],dispatch}) {
                 item={item} />)}
             </ScrollView>
         </SafeAreaView>
+        <AppMenu />
+      </>
     )
 }
 

@@ -1,10 +1,11 @@
 import React,{useState,useEffect,useRef} from 'react';
-import { Text,Image,Dimensions,SafeAreaView, ScrollView, StatusBar, TextInput, View ,StyleSheet} from "react-native";
+import { Text,TouchableHighlight,Image,Dimensions,SafeAreaView, ScrollView, StatusBar, TextInput, View ,StyleSheet} from "react-native";
 import Icon from 'react-native-vector-icons/AntDesign';
 import Icon2 from 'react-native-vector-icons/Ionicons';
 
 import { connect } from "react-redux";
 import { useNavigation } from '@react-navigation/core';
+import AppMenu from "./AppMenu";
 
 
 function Location({search_villa ,dispatch}) {
@@ -25,31 +26,33 @@ function Location({search_villa ,dispatch}) {
     };
 
     return (
-        <View  style={styles.container}>
-            <View style={styles.searchContainer}>
-                <View style={styles.inputContainer}>
-                    <Icon name="search1"  size={20}  style={styles.inputIcon} />
-                    <TextInput
-                        style={styles.input}
-                        onChangeText={(value) => updateFilters(value)}
-                        name="text"
-                        value={search}
-                        placeholder="Search"
-                        ref={focusDiv}
-                    />
+        <>        
+            <View  style={styles.container}>
+                <View style={styles.searchContainer}>
+                    <View style={styles.inputContainer}>
+                        <Icon name="search1"  size={20}  style={styles.inputIcon} />
+                        <TextInput
+                            style={styles.input}
+                            onChangeText={(value) => updateFilters(value)}
+                            name="text"
+                            value={search}
+                            placeholder="Search"
+                            ref={focusDiv}
+                        />
+                    </View>
+                    <Icon2 name="ios-funnel-outline"  size={30} style={styles.funnelIcon}/>
                 </View>
-                <Icon2 name="ios-funnel-outline"  size={30} style={styles.funnelIcon}/>
+
+                
+
+                <SafeAreaView style={styles.container_area}>
+                    <ScrollView style={styles.scrollView}>
+                        {search_villa.map(({id,image}) =>  <Image  key={id} source={{uri: image }} style={styles.tinyLogo} />)}  
+                    </ScrollView>
+                </SafeAreaView>
             </View>
-
-            
-
-            <SafeAreaView style={styles.container_area}>
-                 <ScrollView style={styles.scrollView}>
-                    {search_villa.map(({id,image}) =>  <Image key={id} source={{uri: image }} style={styles.tinyLogo} /> )}  
-               
-                </ScrollView>
-            </SafeAreaView>
-        </View>
+            <AppMenu />
+        </>
     )
 }
 

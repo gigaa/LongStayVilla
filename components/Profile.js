@@ -4,53 +4,57 @@ import { Text, StyleSheet, View ,Image,StatusBar} from "react-native";
 import Icon from 'react-native-vector-icons/AntDesign';
 import Icon2 from 'react-native-vector-icons/FontAwesome5';
 import Icon3 from 'react-native-vector-icons/MaterialCommunityIcons';
+import AppMenu from "./AppMenu";
 
 
 export default function Profile() {
     return (
-        <View style={styles.container}>
-            <View  style={styles.freamcontainer}>
-                <View style={styles.header}>
-                    <View style={styles.header__left}>
-                        <Image  source={{uri: 'https://i.err.ee/smartcrop?type=optimize&width=672&aspectratio=16%3A10&url=https%3A%2F%2Fs.err.ee%2Fphoto%2Fcrop%2F2021%2F02%2F04%2F911671hec62.jpg' }} style={styles.tinyLogo} />
-                    </View>
-                    <View style={styles.header__right}>
-                        <Text style={styles.name}> Jane Doe</Text>
-                        <Text style={styles.email}> janedoe123@email.com</Text>
-                        <View  style={styles.editbtn}>
-                            <Text style={styles.edittext}> EDIT PROFILE</Text>
+        <>
+            <View style={styles.container}>
+                <View  style={styles.freamcontainer}>
+                    <View style={styles.header}>
+                        <View style={styles.header__left}>
+                            <Image  source={{uri: 'https://i.err.ee/smartcrop?type=optimize&width=672&aspectratio=16%3A10&url=https%3A%2F%2Fs.err.ee%2Fphoto%2Fcrop%2F2021%2F02%2F04%2F911671hec62.jpg' }} style={styles.tinyLogo} />
+                        </View>
+                        <View style={styles.header__right}>
+                            <Text style={styles.name}> Jane Doe</Text>
+                            <Text style={styles.email}> janedoe123@email.com</Text>
+                            <View  style={styles.editbtn}>
+                                <Text style={styles.edittext}> EDIT PROFILE</Text>
+                            </View>
                         </View>
                     </View>
-                </View>
-                <View style={styles.card}>
-                    <View style={styles.card__item}>
-                        <Icon name="bars" size={30} color="gray"  />
-                        <Text style={styles.cardText}>All My Booking</Text>
-                        <Icon style={styles.cardArrow} name="rightcircle" size={20} color="gray" />
-                        <View style={styles.card__line}></View>
+                    <View style={styles.card}>
+                        <View style={styles.card__item}>
+                            <Icon name="bars" size={30} color="gray"  />
+                            <Text style={styles.cardText}>All My Booking</Text>
+                            <Icon style={styles.cardArrow} name="rightcircle" size={20} color="gray" />
+                            <View style={styles.card__line}></View>
+                        </View>
+                        <View style={styles.card__item}>
+                            <Icon2 name="parachute-box" size={30} color="gray"  />
+                            <Text style={styles.cardText}>Pending Visits</Text>
+                            <Icon style={styles.cardArrow} name="rightcircle" size={20} color="gray" />
+                            <View style={styles.card__line}></View>
+                        </View>
+                        <View style={styles.card__item}>
+                            <Icon name="creditcard" size={30} color="gray" />
+                            <Text style={styles.cardText}>Pending Payments</Text>
+                            <Icon style={styles.cardArrow} name="rightcircle" size={20} color="gray" />
+                            <View style={styles.card__line}></View>
+                        </View>
+                        <View style={styles.card__item}>
+                            <Icon3 name="star-circle-outline" size={30} color="gray"  />
+                            <Text style={styles.cardText}>Feedback</Text>
+                            <Icon style={styles.cardArrow} name="rightcircle" size={20} color="gray" />
+                        </View>
                     </View>
-                    <View style={styles.card__item}>
-                        <Icon2 name="parachute-box" size={30} color="gray"  />
-                        <Text style={styles.cardText}>Pending Visits</Text>
-                        <Icon style={styles.cardArrow} name="rightcircle" size={20} color="gray" />
-                        <View style={styles.card__line}></View>
-                    </View>
-                    <View style={styles.card__item}>
-                        <Icon name="creditcard" size={30} color="gray" />
-                        <Text style={styles.cardText}>Pending Payments</Text>
-                        <Icon style={styles.cardArrow} name="rightcircle" size={20} color="gray" />
-                        <View style={styles.card__line}></View>
-                    </View>
-                    <View style={styles.card__item}>
-                        <Icon3 name="star-circle-outline" size={30} color="gray"  />
-                        <Text style={styles.cardText}>Feedback</Text>
-                        <Icon style={styles.cardArrow} name="rightcircle" size={20} color="gray" />
-                    </View>
-                </View>
 
+                </View>
+    
             </View>
- 
-        </View>
+            <AppMenu />
+        </>
     )
 }
 

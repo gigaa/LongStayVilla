@@ -10,7 +10,7 @@ function SingleVilla({signle_villa ,dispatch}) {
     let navigation = useNavigation();
 
     // console.log(JSON.stringify(signle_villa) );
-    let {name,description,image,reviews,price,address,totalarea}= signle_villa[0]
+    let {id,name,description,image,reviews,price,address,totalarea}= signle_villa[0]
 
     return (
         <View style={styles.container}>
@@ -49,6 +49,8 @@ function SingleVilla({signle_villa ,dispatch}) {
                           { text: "OK", onPress: () => {
                             // let list = villas.filter((record) => (record.id == id));
                             // console.log("OK Pressed",list) 
+                            bookingVilla= dispatch({ type: "GET_BOOKING" ,payload: { id } });
+
                             navigation.navigate('BookingConfirm')
                           }
                         }

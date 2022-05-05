@@ -3,10 +3,14 @@ import { StyleSheet, Text, View } from 'react-native';
 import { NavigationContainer } from '@react-navigation/native';
 import { createStackNavigator } from '@react-navigation/stack';
 import Login from './container/Login';
-import Navbar from './container/Navbar';
+// import Navbar from './container/Navbar';
+import Home from './components/Home';
+import Location from './components/Location';
 import Booking from './components/Booking';
 import BookingConfirm from './components/BookingConfirm';
 import SingleVilla from './components/SingleVilla';
+import Profile from './components/Profile';
+import More from './components/More';
 
 import reducer from "./reducer";
 // redux stuff
@@ -27,12 +31,17 @@ export default function App() {
       <NavigationContainer>
         <Stack.Navigator>
           <Stack.Screen name="Login" component={Login} />
-          <Stack.Screen name="Navbar" component={Navbar} />
+          {/* <Stack.Screen name="Navbar" component={Navbar} /> */}
+          <Stack.Screen name="Home" component={Home} />
+          <Stack.Screen name="Location" component={Location} />
           <Stack.Screen name="Booking" component={Booking} />
           <Stack.Screen name="BookingConfirm" component={BookingConfirm} />   
           <Stack.Screen name="SingleVilla" component={SingleVilla} />
+          <Stack.Screen name="Profile" component={Profile} />
+          <Stack.Screen name="More" component={More} />
 
         </Stack.Navigator>
+        {/* <More /> */}
       </NavigationContainer>
     </Provider>
 

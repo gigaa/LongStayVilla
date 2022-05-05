@@ -19,7 +19,7 @@ export default function Login() {
     onLoginButton = () => {
         console.log(">> on login button");
         if (email == password) {
-            navigation.navigate('Navbar', { name: email });
+            navigation.navigate('Home', { name: email });
             setEmail('')
             setPassword('')
         } else {

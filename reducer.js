@@ -104,17 +104,19 @@ let villaItems = [{
     villas: villaItems,
     signle_villa: [],
     search_villa: [],
-
+    booking_villa: []
   };
   
   // reducer
   function reducer(state = initialStore, action) {
         if (action.type === "GET_ALL_VILLA") {
+          // console.log('GET_ALL_VILLA ',state);
+
           return { ...state};
         }
         if (action.type === "GET_SINGLE_VILLA_SUCCESS") {
             let list = state.villas.filter((record) => (record.id == action.payload.id));
-            console.log('GET_SINGLE_VILLA_SUCCESS ',list);
+            // console.log('GET_SINGLE_VILLA_SUCCESS ',list);
             return {...state,signle_villa: list};
         }
 
@@ -128,8 +130,15 @@ let villaItems = [{
           });
           // console.log('tempProducts',JSON.stringify(tempProducts) );
           // console.log('value',value );
-
           return { ...state, search_villa: tempProducts };
+        }
+
+        if (action.type === "GET_BOOKING") {
+          let list = state.villas.filter((record) => (record.id == action.payload.id));
+          // console.log('GET_BOOKING ',list);
+
+          return { ...state,booking_villa: [...state.booking_villa, list] };
+
         }
     
         return state;

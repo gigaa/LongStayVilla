@@ -1,4 +1,4 @@
-import { Text, StyleSheet,StatusBar,ImageBackground,TouchableHighlight, View ,Button,Image} from "react-native";
+import { Text, StyleSheet,StatusBar,TouchableHighlight, View ,Image} from "react-native";
 import React from 'react';
 import Icon from 'react-native-vector-icons/Ionicons';
 
