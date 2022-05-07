@@ -2,6 +2,8 @@ import { Text, StatusBar, View ,StyleSheet} from "react-native";
 import React from 'react';
 import ButtonRed from "./ButtonRed";
 import Icon from 'react-native-vector-icons/AntDesign';
+import Icon2 from 'react-native-vector-icons/Fontisto';
+
 import { useNavigation } from '@react-navigation/core';
 
 
@@ -10,6 +12,12 @@ export default function BookingConfirm() {
 
     return (
         <View style={styles.container}>
+            <Icon2 style={styles.close} 
+            onPress={()=> {
+                navigation.navigate('Home')
+            }} name="close-a" size={30} color="#B2002D"  />
+            {/* <View style={styles.xcontainer}>
+            </View> */}
             <View style={styles.circle}>
                 <Icon style={styles.icon} name="check" size={70} color="#B2002D"  />
             </View>
@@ -57,5 +65,10 @@ const styles = StyleSheet.create({
         color: 'gray',
         marginTop: 30,
         marginBottom: 30,
+    },
+    close:{
+        position: 'absolute',
+        top: 20,
+        right: 20,
     }
   });

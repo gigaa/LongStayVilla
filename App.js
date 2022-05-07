@@ -1,5 +1,5 @@
 import { StatusBar } from 'expo-status-bar';
-import { StyleSheet, Text, View } from 'react-native';
+import { StyleSheet, Button, View } from 'react-native';
 import { NavigationContainer } from '@react-navigation/native';
 import { createStackNavigator } from '@react-navigation/stack';
 import Login from './container/Login';
@@ -26,12 +26,12 @@ const store = createStore(
 const Stack = createStackNavigator();
 
 export default function App() {
+  console.log('store',store.getState().signle_villa.price);
   return (
     <Provider store={store}>
       <NavigationContainer>
         <Stack.Navigator>
           <Stack.Screen name="Login" component={Login} />
-          {/* <Stack.Screen name="Navbar" component={Navbar} /> */}
           <Stack.Screen name="Home" component={Home} />
           <Stack.Screen name="Location" component={Location} />
           <Stack.Screen name="Booking" component={Booking} />
@@ -39,9 +39,7 @@ export default function App() {
           <Stack.Screen name="SingleVilla" component={SingleVilla} />
           <Stack.Screen name="Profile" component={Profile} />
           <Stack.Screen name="More" component={More} />
-
         </Stack.Navigator>
-        {/* <More /> */}
       </NavigationContainer>
     </Provider>
 

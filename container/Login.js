@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React,{useState,useEffect} from 'react';
 import { useNavigation } from '@react-navigation/core';
 import {
     StyleSheet,
@@ -10,11 +10,29 @@ import {
     Image,
     Alert
 } from 'react-native';
+import * as Font from 'expo-font';
+
+let customFonts = {
+  'Montserrat-Regular': require('../assets/fonts/Montserrat-Regular.ttf'),
+  'Montserrat-Medium': require('../assets/fonts/Montserrat-Medium.ttf'),
+  'Montserrat-Bold': require('../assets/fonts/Montserrat-Bold.ttf'),
+};
+
 
 export default function Login() {
+    const [fontsLoaded, setFontsLoaded] = useState(false);
     const [email, setEmail] = useState('admin');
     const [password, setPassword] = useState('admin');
     let navigation = useNavigation();
+
+
+    async function  _loadFontsAsync() {
+        await Font.loadAsync(customFonts);
+        setFontsLoaded(true);
+      }
+      useEffect(() => {
+        _loadFontsAsync()
+      }, []);
 
     onLoginButton = () => {
         console.log(">> on login button");
@@ -28,6 +46,7 @@ export default function Login() {
     }
     return (
         <View style={styles.container}>
+            <Text style={{fontFamily: 'Montserrat-Bold',fontSize: 32,justifyContent:'flex-start',width:'65%'}}>Login Account</Text>
             <View style={styles.inputContainer}>
                 <Text style={styles.text}>Email</Text>
                 <TextInput style={styles.inputs}
@@ -77,7 +96,8 @@ const styles = StyleSheet.create({
     },
     inputContainer: {
         flexDirection: 'column',
-        alignItems: 'flex-start'
+        alignItems: 'flex-start',
+        marginTop:20,
     },
     inputs: {
         paddingLeft: 15,

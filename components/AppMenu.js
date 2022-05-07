@@ -1,7 +1,9 @@
-import React,{useState,useEffect} from 'react';
+import React from 'react';
 import { StyleSheet, TextInput, View, SafeAreaView, Text, Alert, TouchableHighlight, TouchableOpacity, Button } from 'react-native';
 import { useNavigation,useIsFocused ,useRoute} from '@react-navigation/core';
 import Icon from 'react-native-vector-icons/AntDesign';
+
+
 
 const Menu = (props) => {
     let navigation = useNavigation();

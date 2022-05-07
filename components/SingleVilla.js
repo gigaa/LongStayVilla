@@ -1,4 +1,4 @@
-import React,{useEffect} from 'react';
+import React,{useLayoutEffect} from 'react';
 import { useNavigation } from '@react-navigation/core';
 import { Text, Alert,StyleSheet,Dimensions,StatusBar,ImageBackground,TouchableOpacity, View ,Button,Image} from "react-native";
 import { connect } from "react-redux";
@@ -11,7 +11,13 @@ function SingleVilla({signle_villa ,dispatch}) {
 
     // console.log(JSON.stringify(signle_villa) );
     let {id,name,description,image,reviews,price,address,totalarea}= signle_villa[0]
-
+    useLayoutEffect(() => {
+            navigation.setOptions({
+            headerRight: () => (
+                <Text style={styles.headerRight}>Price {price}</Text>
+            ),
+            });
+    }, [navigation]);
     return (
         <View style={styles.container}>
             <Image source={{uri: image }}   style={styles.tinyLogo} />
@@ -137,6 +143,11 @@ const styles = StyleSheet.create({
         width: '100%',
         height: 300,
     },
+    headerRight:{
+        color:"#B2002D",
+        fontSize: 17,
+        marginRight: 20,
+    }
   });
 
 const mapStateToProps = (state) => {
