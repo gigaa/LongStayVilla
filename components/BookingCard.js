@@ -1,17 +1,21 @@
-import { Text, StyleSheet,StatusBar,TouchableHighlight, View ,Image} from "react-native";
+import { Text, StyleSheet,StatusBar,TouchableOpacity, View ,Image} from "react-native";
 import React from 'react';
 import Icon from 'react-native-vector-icons/Ionicons';
+import { useNavigation } from '@react-navigation/core';
+import { connect } from "react-redux";
 
-export default function BookingCard({item,onMore}) {
+function BookingCard({item,onMore,dispatch}) {
+    let navigation = useNavigation();
+
     let {id,name,image,description,price,address,totalarea}=item[0];
     console.log('address>',id);
     return (
-        <View style={styles.container} 
-        onPress={()=>{ 
-            onMore(id)
-            console.log('MORE')
-        }}
-        >
+        <TouchableOpacity key={id} onPress={() => {
+            singleVilla= dispatch({ type: "GET_SINGLE_VILLA_SUCCESS" ,payload: { id } });
+            navigation.navigate('SingleVilla')
+        }}>
+
+        <View style={styles.container} >
             <Image source={{uri: image }}   style={styles.tinyLogo} />
             <Text style={styles.name} >{name}</Text>
             <Text style={styles.description} >{description}</Text>
@@ -27,6 +31,7 @@ export default function BookingCard({item,onMore}) {
                 </Text>
             </View>
         </View>
+        </TouchableOpacity>
     )
 }
 
@@ -77,3 +82,9 @@ const styles = StyleSheet.create({
         marginTop:20,
     },
   });
+
+  const mapStateToProps = (state) => {
+    const {  } = state;
+    return {  };
+};
+export default connect(mapStateToProps)(BookingCard);

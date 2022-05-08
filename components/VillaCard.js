@@ -4,7 +4,7 @@ import Icon from 'react-native-vector-icons/Ionicons';
 
 export default function VillaCard({item,onBook,onMore}) {
     let {id,name,image,price,address,totalarea}=item;
-    console.log('address>',id);
+    // console.log('address>',id);
     return (
         <View style={styles.container}>
   

@@ -44,7 +44,7 @@ function Home({villas = [],dispatch}) {
                         }
                         ]
                     );
-                    console.log(">> selectCustomer "+id);
+                    // console.log(">> selectCustomer "+id);
                 }}
                 onMore = {(id)=>{
                     // let list = villas.filter((record) => (record.id == id));

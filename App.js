@@ -1,5 +1,5 @@
 import { StatusBar } from 'expo-status-bar';
-import { StyleSheet, Button, View } from 'react-native';
+import { StyleSheet, LogBox, View } from 'react-native';
 import { NavigationContainer } from '@react-navigation/native';
 import { createStackNavigator } from '@react-navigation/stack';
 import Login from './container/Login';
@@ -22,11 +22,11 @@ const store = createStore(
   reducer,
 );
 
+LogBox.ignoreAllLogs();//Ignore all log notifications
 
 const Stack = createStackNavigator();
 
 export default function App() {
-  console.log('store',store.getState().signle_villa.price);
   return (
     <Provider store={store}>
       <NavigationContainer>

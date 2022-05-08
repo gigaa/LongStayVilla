@@ -1,5 +1,5 @@
 import React,{useState,useEffect,useRef} from 'react';
-import { Text,TouchableHighlight,Image,Dimensions,SafeAreaView, ScrollView, StatusBar, TextInput, View ,StyleSheet} from "react-native";
+import { Text,TouchableOpacity,Image,Dimensions,SafeAreaView, ScrollView, StatusBar, TextInput, View ,StyleSheet} from "react-native";
 import Icon from 'react-native-vector-icons/AntDesign';
 import Icon2 from 'react-native-vector-icons/Ionicons';
 
@@ -47,7 +47,14 @@ function Location({search_villa ,dispatch}) {
 
                 <SafeAreaView style={styles.container_area}>
                     <ScrollView style={styles.scrollView}>
-                        {search_villa.map(({id,image}) =>  <Image  key={id} source={{uri: image }} style={styles.tinyLogo} />)}  
+                        {search_villa.map(({id,image}) =>  
+                        <TouchableOpacity key={id} onPress={() => {
+                            singleVilla= dispatch({ type: "GET_SINGLE_VILLA_SUCCESS" ,payload: { id } });
+                            navigation.navigate('SingleVilla')
+                        }}>
+                            <Image   source={{uri: image }} style={styles.tinyLogo} />
+                        </TouchableOpacity>
+                        )}  
                     </ScrollView>
                 </SafeAreaView>
             </View>
